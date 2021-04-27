@@ -2,7 +2,10 @@ body{
     background-color: black;
 }
 .nav_bar{
+    position: fixed;
+    top: 0;
     height: 50px;
+    width: 1300px;
     display: flex;
     gap: 100px;
     align-items: center;
@@ -13,9 +16,30 @@ body{
     border-bottom: yellow solid 2px;
 }
 .nav {
-
     font-size: 20px;
 }
 #login{
     margin-left: auto;
+}
+
+.pages{
+    position:absolute;
+    top: 75px;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.overview{
+    width: 300px;
+    height: 150px;
+    border: yellow solid 3px;
+}
+#airing_page{
+    visibility:hidden;
+}
+#movies_pages{
+    visibility: hidden;
 }
