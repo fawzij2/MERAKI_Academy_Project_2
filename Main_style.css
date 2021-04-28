@@ -90,11 +90,11 @@ body{
     height: 200px;
 }
 #home_page{
-    visibility: hidden;
+    display: none;
 }
 #airing_page{
-    /* visibility: hidden; */
+    display: none;
 }
-#movies_pages{
-    visibility: hidden;
+#movies_page{
+    /* display: none; */
 }
