@@ -1,5 +1,5 @@
 body{
-    background-color: black;
+    background-color: #f1faee;
 }
 .nav_bar{
     position: fixed;
@@ -12,8 +12,8 @@ body{
     padding-left: 25px;
     padding-right: 25px;
     font-family:fantasy;
-    color: white;
-    border-bottom: yellow solid 2px;
+    color: #457b9d;
+    border-bottom: #e63946 solid 2px;
 }
 .nav {
     font-size: 20px;
@@ -27,39 +27,37 @@ body{
 
 .pages{
     position:absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     top: 75px;
+    width: 1285px;
+
+}
+
+.intro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1340px;
+    font-family: cursive;
+    font-size: 25px;
+    text-align: center;
+    color: #1d3557;
+}
+
+.main{
     display: grid;
     grid-template-columns: repeat(3, 300px);
     gap: 100px;
     justify-content: space-evenly;
     align-items: center;
-    width: 1285px;
-}
-
-.intro{
-    position: absolute;
-    top: 5px;
-    left: 33%;
-    font-family: cursive;
-    font-size: 25px;
-    text-align: center;
-    color: white;
-}
-.intro1{
-    position: absolute;
-    top: 5px;
-    left: 36%;
-    font-family: cursive;
-    font-size: 25px;
-    text-align: center;
-    color: white;
 }
 .overview{
     display: flex;
-    margin-top: 75px;
     width: 350px;
     height: 200px;
-    border: yellow solid 3px;
+    border: #e63946 solid 3px;
 }
 .overview:hover{
     cursor: pointer;
@@ -68,7 +66,7 @@ body{
 .pic{
     width: 150px;
     height: 200px;
-    border-right: white solid 2px;
+    border-right: #1d3557 solid 2px;
 }
 
 .description{
@@ -78,7 +76,7 @@ body{
     justify-content: center;
     font-family: monospace;
     font-size: 18px;
-    color: white;
+    color: #1d3557;
 }
 
 .title{
@@ -96,5 +94,62 @@ body{
     display: none;
 }
 #movies_page{
-    /* display: none; */
+    display: none;
+}
+
+#log_reg{
+    position:absolute;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    top: 75px;
+    width: 1285px;
+    font-family:fantasy;
+    font-size: 16px;
+    color: #457b9d;
+    /* visibility: hidden; */
+}
+
+.lr{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 30px;
+}
+
+.info{
+    width: 200px;
+    height: 20px;
+}
+
+#log{
+    border-right: #e63946 solid 2px;
+}
+
+.title1{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 28px;
+}
+
+.confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 34px;
+    background-color: #1d3557;
+    color: #a8dadc;
+    /* text-align: center; */
+    font-size: 20px;
+}
+
+.confirm:hover{
+    cursor: pointer;
+    background-color: #a8dadc;
+    color: #1d3557;
 }
