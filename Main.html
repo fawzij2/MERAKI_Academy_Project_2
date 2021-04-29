@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./Main_style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
@@ -12,11 +13,7 @@
         <div class="nav" id="home">HOME</div>
         <div class="nav" id="airing">AIRING</div>
         <div class="nav" id="movies">MOVIES</div>
-        <div id="login">
-            <input type="text" name="user" id="user">
-            <input type="password" name="pass" id="pass">
-            <button id="log">Login</button>
-        </div>
+        <div class="nav" id="login">Login/Register</div>
     </div>
     <div class="main_body">
         <div class="pages" id="home_page">
@@ -194,18 +191,31 @@
             </div>
         </div>
         <div id="log_reg">
-            <div class="lr" id="log">
-                <div class="title1">Log in</div>
-                <div>Username <br><br> <input type="text" name="Log in user" class="info" id="l_user" placeholder="Enter username"></div>
+            <div class="lr" id="log1">
+                <div class="title1">Log in</div><br>
+                <div>Username <br><br> <input type="text" name="Log in user" class="info" id="l_user" placeholder="Enter username"></div><br>
                 <div>Password <br><br> <input type="password" name="Log in pass" class="info" id="l_pass" placeholder="Enter password"></div>
-                <div class="confirm"> Log in</div>
+                <div class="confirm" id="log_button"> Log in</div>
+                <div id="new_a">You don't have an account?</div>
+                <div id="user_check">incorrect username or password</div>
             </div>
             <div class="lr" id="reg">
                 <div class="title1">Register</div>
-                <div id="reg_user">Username <br><br> <input type="text" name="Username" class="info" id="r_user" placeholder="Enter a username"></div>
-                <div id="reg_pass">Password <br><br> <input type="password" name="password" class="info" id="r_pass" placeholder="Enter a password"></div>
-                <div id="c_password"> Confirm password <br><br> <input type="password" name="confirm_password" class="info" id="c_pass" placeholder="Confirm the password"></div>
-                <div class="confirm">Register</div>
+                <div id="reg_user">Username 
+                    <br><br>
+                    <input type="text" name="Username" class="info" id="r_user" placeholder="Enter a username">
+                </div>
+                <div id="userCheck">Username already exists</div>
+                    <br>
+                <div id="reg_pass">Password 
+                    <br><br> 
+                    <input type="password" name="password" class="info" id="r_pass" placeholder="Enter a password">
+                </div>
+                <div id="c_password"> Confirm password <br><br> 
+                    <input type="password" name="confirm_password" class="info" id="c_pass" placeholder="Confirm the password">
+                </div>
+                <div id="pass_check">password and confirm password are should be the same</div>
+                <div class="confirm" id="reg_button">Register</div>
             </div>
         </div>
         <div id="info_page"></div>
