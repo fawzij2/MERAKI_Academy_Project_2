@@ -1,13 +1,14 @@
 const accounts = window.localStorage;
 const favourite = window.localStorage;
-let loggedIn = false
-localStorage.setItem(`loggedIn`, loggedIn)
+sessionStorage.setItem(`loggedIn`, `false`)
 sessionStorage.setItem(`lastvisted` ,`h_page`)
 
 const home = $(`#home`);
 const airing = $(`#airing`);
 const movies = $(`#movies`);
-const login = $(`#login`)
+const login1 = $(`#login1`);
+const loggedIn = $(`#loggedIn`)
+const signOut = $(`#login2`);
 const h_page = $(`#home_page`);
 const a_page = $(`#airing_page`);
 const m_page = $(`#movies_page`);
@@ -38,7 +39,7 @@ movies.on(`click`, () => {
     log_reg.css(`display`, `none`)
     sessionStorage.setItem(`lastvisted` ,`m_page`)
 });
-login.on(`click`, () => {
+login1.on(`click`, () => {
     h_page.css(`display`, `none`)
     a_page.css(`display`, `none`)
     m_page.css(`display`, `none`)
@@ -56,9 +57,22 @@ log_button.on(`click`, () => {
     const pass = $(`#l_pass`).val();
     console.log(pass);
     if (accounts[user] === pass){
-        loggedIn = true
-        let welcomeText = `welcom` + user
-        login.text(welcomeText);
+        // loggedIn = true
+        // let welcomeText = `welcome ${user}`
+        login1.css(`display`, `none`);
+        loggedIn.text(`welcome ${user}`);
+        signOut.css(`display`, `block`);
+        sessionStorage.setItem(`loggedIn`, `true`);
+        log_reg.css(`display`, `none`)
+        let lastVisited = sessionStorage.getItem(`lastvisted`);
+        sessionStorage.setItem(`loggedIn`, `true`)
+            if (lastVisited === `h_page`){
+                h_page.css(`display`, `block`)
+            } else if (lastVisited === `a_page`){
+                a_page.css(`display`, `block`)
+            } else if (lastVisited === `m_page`){
+                m_page.css(`display`, `block`)
+            }
     } else {
         $(`#user_check`).css(`display`, `block`)
     }
@@ -74,6 +88,20 @@ reg_button.on(`click`, () => {
     if (!accounts[user]) {
         if (pass === con_pass){
             accounts[user] = pass
+            log_reg.css(`display`, `none`)
+            let lastVisited = sessionStorage.getItem(`lastvisted`);
+            // let welcomeText1 = `welcome` + user;
+            loggedIn.text(`welcome ${user}`);
+            login1.css(`display`, `none`);
+            signOut.css(`display`, `block`);
+            sessionStorage.setItem(`loggedIn`, `true`)
+            if (lastVisited === `h_page`){
+                h_page.css(`display`, `block`)
+            } else if (lastVisited === `a_page`){
+                a_page.css(`display`, `block`)
+            } else if (lastVisited === `m_page`){
+                m_page.css(`display`, `block`)
+            }
         } else {
             $(`#pass_check`).css(`display`, `block`)
         }
@@ -81,3 +109,24 @@ reg_button.on(`click`, () => {
         $(`#userCheck`).css(`display`, `block`)
     }
 });
+
+signOut.on(`click`, () => {
+    login1.css(`display`, `block`);
+    loggedIn.text(``);
+    signOut.css(`display`, `none`);
+    log_reg.css(`display`, `none`)
+    let lastVisited = sessionStorage.getItem(`lastvisted`);
+    if (lastVisited === `h_page`){
+        h_page.css(`display`, `block`)
+    } else if (lastVisited === `a_page`){
+        a_page.css(`display`, `block`)
+    } else if (lastVisited === `m_page`){
+        m_page.css(`display`, `block`)
+    }
+})
+
+$.getJSON(
+    `https://kitsu.io/api/edge/anime/1376`, (data) => {
+        console.log(data);
+    }
+)
