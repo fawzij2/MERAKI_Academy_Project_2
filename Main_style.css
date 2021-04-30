@@ -102,7 +102,7 @@ body{
     height: 200px;
 }
 #home_page{
-    /* display: none; */
+    display: none;
 }
 #airing_page{
     display: none;
@@ -192,4 +192,64 @@ body{
 #pass_check{
     color: #e63946;
     display: none;
+}
+
+#info_page {
+    position: absolute;
+    top: 75px;
+    width: 1285px;
+    height: 100vh;
+    /* display: none; */
+}
+
+.testing{
+    border: #e63946 solid 2px;
+}
+#poster{
+    position: absolute;
+    left: 10%;
+    width: 250px;
+    height: 333px;
+}
+#ani_title{
+    position: absolute;
+    left: 35%;
+    width: 700px;
+    height: 75px;
+}
+#rating{
+    position: absolute;
+    left: 35%;
+    top: 23%;
+    width: 175px;
+    height: 50px;
+}
+#eps{
+    position: absolute;
+    left: 75.9%;
+    top: 23%;
+    width: 175px;
+    height: 50px;
+}
+#s_date{
+    position: absolute;
+    left: 49%;
+    top: 42.9%;
+    width: 165px;
+    height: 50px;
+}
+
+#e_date{
+    position: absolute;
+    left: 63%;
+    top: 42.9%;
+    width: 165px;
+    height: 50px;
+}
+#ani_desc{
+    position: absolute;
+    left: 10%;
+    top: 60%;
+    width: 80%;
+    height: 300px;
 }
