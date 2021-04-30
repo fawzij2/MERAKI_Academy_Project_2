@@ -199,7 +199,7 @@ body{
     top: 75px;
     width: 1285px;
     height: 100vh;
-    /* display: none; */
+    display: none;
 }
 
 .testing{
@@ -208,6 +208,10 @@ body{
 #poster{
     position: absolute;
     left: 10%;
+    width: 250px;
+    height: 333px;
+}
+#poster1{
     width: 250px;
     height: 333px;
 }
@@ -251,5 +255,5 @@ body{
     left: 10%;
     top: 60%;
     width: 80%;
-    height: 300px;
+    height: 33%;
 }
