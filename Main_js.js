@@ -146,13 +146,15 @@ panel.on(`click`, () => {
     m_page.css(`display`, `none`);
     $.getJSON(
         `https://kitsu.io/api/edge/anime/1376`, (data) => {
-            $(`#poster1`).attrib(`src`, data.attributes.posterImage.original)
-            $(`#ani_title`).text(data.attributes.canonicalTitle);
-            $(`#rating`).text(data.attributes.averageRating);
-            $(`#eps`).text(data.attributes.episodeCount);
-            $(`#s_date`).text(data.attributes.startDate);
-            $(`#e_date`).text(data.attributes.endDate);
-            $(`#ani_desc`).text(data.attributes.description);
+            let posterImage = data.data.attributes.posterImage.original
+            console.log(posterImage);
+            $(`#poster1`).attr(`src`, data.data.attributes.posterImage.original);
+            $(`#ani_title`).text(data.data.attributes.canonicalTitle);
+            $(`#rating`).text(data.data.attributes.averageRating);
+            $(`#eps`).text(data.data.attributes.episodeCount);
+            $(`#s_date`).text(data.data.attributes.startDate);
+            $(`#e_date`).text(data.data.attributes.endDate);
+            $(`#ani_desc`).text(data.data.attributes.description);
             // $(`#`)
             // $(`#`)
             // $(`#`)
