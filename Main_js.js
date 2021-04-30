@@ -2,6 +2,7 @@ const accounts = window.localStorage;
 const favourite = window.localStorage;
 let loggedIn = false
 localStorage.setItem(`loggedIn`, loggedIn)
+sessionStorage.setItem(`lastvisted` ,`h_page`)
 
 const home = $(`#home`);
 const airing = $(`#airing`);
@@ -21,18 +22,21 @@ home.on(`click`, () => {
     a_page.css(`display`, `none`)
     m_page.css(`display`, `none`)
     log_reg.css(`display`, `none`)
+    sessionStorage.setItem(`lastvisted` ,`h_page`)
 });
 airing.on(`click`, () => {
     h_page.css(`display`, `none`)
     a_page.css(`display`, `block`)
     m_page.css(`display`, `none`)
     log_reg.css(`display`, `none`)
+    sessionStorage.setItem(`lastvisted` ,`a_page`)
 });
 movies.on(`click`, () => {
     h_page.css(`display`, `none`)
     a_page.css(`display`, `none`)
     m_page.css(`display`, `block`)
     log_reg.css(`display`, `none`)
+    sessionStorage.setItem(`lastvisted` ,`m_page`)
 });
 login.on(`click`, () => {
     h_page.css(`display`, `none`)
@@ -53,7 +57,8 @@ log_button.on(`click`, () => {
     console.log(pass);
     if (accounts[user] === pass){
         loggedIn = true
-        login.text(`welcome` + user);
+        let welcomeText = `welcom` + user
+        login.text(welcomeText);
     } else {
         $(`#user_check`).css(`display`, `block`)
     }
