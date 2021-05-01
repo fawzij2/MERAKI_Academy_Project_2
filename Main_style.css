@@ -102,7 +102,7 @@ body{
     height: 200px;
 }
 #home_page{
-    display: none;
+    /* display: none; */
 }
 #airing_page{
     display: none;
@@ -203,7 +203,7 @@ body{
 }
 
 .testing{
-    border: #e63946 solid 2px;
+    
 }
 #poster{
     position: absolute;
@@ -220,6 +220,14 @@ body{
     left: 35%;
     width: 700px;
     height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    font-size: 32px;
+    color: #f1faee;
+    background-color: #1d3557;
+    border: #1d3557 solid 2px;
 }
 #rating{
     position: absolute;
@@ -227,6 +235,11 @@ body{
     top: 23%;
     width: 175px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-bottom: #1d3557 solid 2px;
 }
 #eps{
     position: absolute;
@@ -234,6 +247,11 @@ body{
     top: 23%;
     width: 175px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-bottom: #1d3557 solid 2px;
 }
 #s_date{
     position: absolute;
@@ -241,6 +259,11 @@ body{
     top: 42.9%;
     width: 165px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-bottom: #1d3557 solid 2px;
 }
 
 #e_date{
@@ -249,6 +272,20 @@ body{
     top: 42.9%;
     width: 165px;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-bottom: #1d3557 solid 2px;
+}
+#synopsis{
+    position: absolute;
+    top: 55% ;
+    left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
 }
 #ani_desc{
     position: absolute;
@@ -256,4 +293,7 @@ body{
     top: 60%;
     width: 80%;
     height: 33%;
+    font-family: cursive;
+    font-size: 16px;
+    border-top: #1d3557 solid 2px;
 }

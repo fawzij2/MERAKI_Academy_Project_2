@@ -155,6 +155,6 @@ const transition = (clickedId) => {
             $(`#eps`).text(`# of eps: ${data.data.attributes.episodeCount}`);
             $(`#s_date`).text(`aired in: ${data.data.attributes.startDate}`);
             $(`#e_date`).text(`ended in: ${data.data.attributes.endDate}`);
-            $(`#ani_desc`).text(`Synopsis: \n \n ${data.data.attributes.description}`);
+            $(`#ani_desc`).text(`${data.data.attributes.description}`);
         })
 }
