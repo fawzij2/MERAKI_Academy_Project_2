@@ -196,8 +196,14 @@ $(`#login1`).on(`mouseout`,() => {
 $(`#changeColor`).on(`click`, () => {
     const current = localStorage.getItem(`currentColor`)
     if (current === `blue`){
-        $(`#changeColor`).css(`background-color`,`#14213d`)
-        $(`#changeColor`).css(`border`, `solid #fca311 2px`);
+        $(`#changeColor`).on(`mouseout` ,() => {
+            $(`#changeColor`).css(`background-color`,`#14213d`)
+            $(`#changeColor`).css(`border`, `solid #fca311 2px`);
+        })
+        $(`#changeColor`).on(`mouseover`, () => {
+            $(`#changeColor`).css(`background-color`,`#f1faee`)
+            $(`#changeColor`).css(`border`, `solid #1d3557 2px`);
+        })
         $(`body`).css(`background-color`, `#14213d`);
         $(`.colorScheme1`).css(`color`, `#000000`);
         $(`.colorScheme2`).css(`border`, `solid #FFFFFF 2px`);
@@ -219,8 +225,14 @@ $(`#changeColor`).on(`click`, () => {
         localStorage.setItem(`currentColor`, `yellow`)
     }
     if (current === `yellow`){
-        $(`#changeColor`).css(`background-color`,`#14213d`)
-        $(`#changeColor`).css(`border`, `solid #fca311 2px`);
+        $(`#changeColor`).on(`mouseout` ,() => {
+            $(`#changeColor`).css(`background-color`,`#f1faee`)
+            $(`#changeColor`).css(`border`, `solid #1d3557 2px`);
+        })
+        $(`#changeColor`).on(`mouseover`, () => {
+            $(`#changeColor`).css(`background-color`,`#14213d`)
+            $(`#changeColor`).css(`border`, `solid #fca311 2px`);
+        })
         $(`body`).css(`background-color`, `#f1faee`);
         $(`.colorScheme1`).css(`color`, `#457b9d`);
         $(`.colorScheme2`).css(`border`, `solid #e63946 2px`);
