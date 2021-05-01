@@ -2,7 +2,7 @@ const accounts = window.localStorage;
 const favourite = window.localStorage;
 sessionStorage.setItem(`loggedIn`, `false`)
 sessionStorage.setItem(`lastvisted` ,`h_page`)
-const showsIds = {death:`1376`, aot:`7442`, dragon:`720`, piece:`12`, naruto:`11`, conan:`210`, mushoku:`42323`, dunk:`148`, haikyuu:`8133`, yugi:`442`, academia:`13881`, jujutsu:`42765`, eva:`21`, punch:`10740`, steins:`5646`, rezero:`11209`, stone:`42080`, jojo:`7158`, kimetsu:`41370`, kaguya:`41373`, bunny:`41056`}
+const showsIds = {death:`1376`, aot:`7442`, dragon:`720`, piece:`12`, naruto:`11`, conan:`210`, mushoku:`42323`, dunk:`148`, haikyuu:`8133`, yugi:`442`, academia:`13881`, jujutsu:`42765`, eva:`21`, punch:`10740`, steins:`5646`, rezero:`11209`, stone:`42080`, jojo:`7158`, kimetsu:`41370`, kaguya:`41373`, bunny:`41056`, boku_s5:`43108`, immortal:`43211`, higehiro:`42923`, revengers:`43321`, 86:`43066`, shaman:`43222`, vivy:`43933`, combatant:`43837`, dynazenon:`42888`}
 
 const home = $(`#home`);
 const airing = $(`#airing`);
@@ -149,7 +149,6 @@ const transition = (clickedId) => {
     $.getJSON(
         `https://kitsu.io/api/edge/anime/${showsIds[clickedId]}`, (data) => {
             let posterImage = data.data.attributes.posterImage.original
-            // console.log(posterImage);
             $(`#poster1`).attr(`src`, data.data.attributes.posterImage.original);
             $(`#ani_title`).text(data.data.attributes.canonicalTitle);
             $(`#rating`).text(`rating ${data.data.attributes.averageRating}`);
@@ -157,10 +156,5 @@ const transition = (clickedId) => {
             $(`#s_date`).text(`aired in: ${data.data.attributes.startDate}`);
             $(`#e_date`).text(`ended in: ${data.data.attributes.endDate}`);
             $(`#ani_desc`).text(`Synopsis: \n \n ${data.data.attributes.description}`);
-            // $(`#`)
-            // $(`#`)
-            // $(`#`)
-            // $(`#`)
-
         })
 }
