@@ -165,6 +165,8 @@ const transition = (clickedId) => {
             $(`#e_date`).text(`ended in: ${data.data.attributes.endDate}`);
             }
             $(`#ani_desc`).text(`${data.data.attributes.description}`);
+            $(`#video`).attr(`src`, `https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`)
+            console.log(`https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`);
         })
 }
 

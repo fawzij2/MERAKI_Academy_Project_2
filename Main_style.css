@@ -87,6 +87,7 @@ body{
     gap: 100px;
     justify-content: space-evenly;
     align-items: center;
+    margin-bottom: 20px;
 }
 .overview{
     display: flex;
@@ -225,6 +226,7 @@ body{
     width: 1285px;
     height: 100vh;
     display: none;
+    margin-bottom: 20px;
 }
 
 .testing{
@@ -323,3 +325,11 @@ body{
     border-top: #1d3557 solid 2px;
 }
 
+#video{
+    position: absolute;
+    top: 95%;
+    left: 35%;
+    /* width: 500px;
+    height: 300px;
+    border:  #1d3557 solid 2px; */
+}
