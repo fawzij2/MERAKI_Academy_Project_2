@@ -3,6 +3,7 @@ const favourite = window.localStorage;
 sessionStorage.setItem(`loggedIn`, `false`)
 sessionStorage.setItem(`lastvisted` ,`h_page`)
 const showsIds = {death:`1376`, aot:`7442`, dragon:`720`, piece:`12`, naruto:`11`, conan:`210`, mushoku:`42323`, dunk:`148`, haikyuu:`8133`, yugi:`442`, academia:`13881`, jujutsu:`42765`, eva:`21`, punch:`10740`, steins:`5646`, rezero:`11209`, stone:`42080`, jojo:`7158`, kimetsu:`41370`, kaguya:`41373`, bunny:`41056`, boku_s5:`43108`, immortal:`43211`, higehiro:`42923`, revengers:`43321`, 86:`43066`, shaman:`43222`, vivy:`43933`, combatant:`43837`, dynazenon:`42888`, voice:`10028`, kimi:`11614`, spirited:`176`, mononoke:`142`, pancreas:`13723`,weather:`42028`, akira:`29`, garden:`7515`, centimeters:`1517` }
+localStorage.setItem(`currentColor`, `blue`)
 
 const home = $(`#home`);
 const airing = $(`#airing`);
@@ -191,3 +192,55 @@ $(`#login1`).on(`mouseover`,() => {
 $(`#login1`).on(`mouseout`,() => {
     $(`#login1`).animate({fontSize:20},`linear`);
 });
+
+$(`#changeColor`).on(`click`, () => {
+    const current = localStorage.getItem(`currentColor`)
+    if (current === `blue`){
+        $(`#changeColor`).css(`background-color`,`#14213d`)
+        $(`#changeColor`).css(`border`, `solid #fca311 2px`);
+        $(`body`).css(`background-color`, `#14213d`);
+        $(`.colorScheme1`).css(`color`, `#000000`);
+        $(`.colorScheme2`).css(`border`, `solid #FFFFFF 2px`);
+        $(`.colorScheme2a`).css(`border-bottom`, `solid #FFFFFF 2px`);
+        $(`.confirm`).on(`mouseover`,() => {
+            $(`.confirm`).css(`color`, `#fca311`);
+            $(`.confirm`).css(`background-color`, `#000000`);
+        })
+        $(`.confirm`).on(`mouseout`,() => {
+            $(`.confirm`).css(`color`, `#000000`);
+            $(`.confirm`).css(`background-color`, `#fca311`);
+        })
+        $(`.insText`).css(`color`, `#ffffff`);
+        $(`.colorScheme3`).css(`color`, `#ffffff`);
+        $(`.colorScheme4`).css(`background-color`, `#fca311`);
+        $(`.colorScheme5`).css(`border`, `solid #fca311 2px`);
+        $(`.colorScheme6`).css(`border-bottom`, `solid #fca311 2px`);
+        $(`.colorScheme7`).css(`border-top`, `solid #fca311 2px`)
+        localStorage.setItem(`currentColor`, `yellow`)
+    }
+    if (current === `yellow`){
+        $(`#changeColor`).css(`background-color`,`#14213d`)
+        $(`#changeColor`).css(`border`, `solid #fca311 2px`);
+        $(`body`).css(`background-color`, `#f1faee`);
+        $(`.colorScheme1`).css(`color`, `#457b9d`);
+        $(`.colorScheme2`).css(`border`, `solid #e63946 2px`);
+        $(`.colorScheme2a`).css(`border-bottom`, `solid #e63946 2px`);
+        $(`.confirm`).css(`color`, `#a8dadc`);
+        $(`.confirm`).css(`background-color`, `#1d3557`);
+        $(`.confirm`).on(`mouseover`,() => {
+            $(`.confirm`).css(`color`, `#1d3557`);
+            $(`.confirm`).css(`background-color`, `#a8dadc`);
+        })
+        $(`.confirm`).on(`mouseout`,() => {
+            $(`.confirm`).css(`color`, `#a8dadc`);
+            $(`.confirm`).css(`background-color`, `#1d3557`);
+        })
+        $(`.insText`).css(`color`, `#1d3557`);
+        $(`.colorScheme3`).css(`color`, `#1d3557`);
+        $(`.colorScheme4`).css(`background-color`, `#1d3557`);
+        $(`.colorScheme5`).css(`border`, `solid #1d3557 2px`);
+        $(`.colorScheme6`).css(`border-bottom`, `solid #1d3557 2px`);
+        $(`.colorScheme7`).css(`border-top`, `solid #1d3557 2px`)
+        localStorage.setItem(`currentColor`, `blue`)
+    }
+})
