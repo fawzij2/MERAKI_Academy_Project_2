@@ -167,3 +167,21 @@ const transition = (clickedId) => {
         })
 }
 
+$(`#home`).on(`mouseover`,() => {
+    $(`#home`).animate({fontSize:28},`linear`);
+});
+$(`#home`).on(`mouseout`,() => {
+    $(`#home`).animate({fontSize:20},`linear`);
+});
+$(`#airing`).on(`mouseover`,() => {
+    $(`#airing`).animate({fontSize:28},`linear`);
+});
+$(`#airing`).on(`mouseout`,() => {
+    $(`#airing`).animate({fontSize:20},`linear`);
+});
+$(`#movies`).on(`mouseover`,() => {
+    $(`#movies`).animate({fontSize:28},`linear`);
+});
+$(`#movies`).on(`mouseout`,() => {
+    $(`#movies`).animate({fontSize:20},`linear`);
+});
