@@ -152,9 +152,18 @@ const transition = (clickedId) => {
             $(`#poster1`).attr(`src`, data.data.attributes.posterImage.original);
             $(`#ani_title`).text(data.data.attributes.canonicalTitle);
             $(`#rating`).text(`rating ${data.data.attributes.averageRating}`);
+            if (data.data.attributes.episodeCount === null){
+                $(`#eps`).text(`# of eps:TBD`)
+            } else {
             $(`#eps`).text(`# of eps: ${data.data.attributes.episodeCount}`);
+            }
             $(`#s_date`).text(`aired in: ${data.data.attributes.startDate}`);
+            if (data.data.attributes.endDate === null){
+                $(`#e_date`).text(`ongoing`)
+            } else {
             $(`#e_date`).text(`ended in: ${data.data.attributes.endDate}`);
+            }
             $(`#ani_desc`).text(`${data.data.attributes.description}`);
         })
 }
+

@@ -14,10 +14,18 @@ body{
     font-family:fantasy;
     color: #457b9d;
     border-bottom: #e63946 solid 2px;
+    z-index: 9;
+    background-color: #f1faee;
 }
 .nav {
     font-size: 20px;
 }
+
+.nav:visited{
+    color: #a8dadc;
+    background-color: #e63946;
+}
+
 .nav:hover {
     cursor: pointer;
 }
@@ -91,11 +99,16 @@ body{
     font-family: monospace;
     font-size: 18px;
     color: #1d3557;
+    filter: blur(10px);
 }
 
+.description:hover{
+    filter: blur(0);
+}
 .title{
     font-size: 22px;
 }
+
 
 .img{
     width: 150px;
@@ -297,3 +310,4 @@ body{
     font-size: 16px;
     border-top: #1d3557 solid 2px;
 }
+
