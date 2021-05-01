@@ -185,3 +185,9 @@ $(`#movies`).on(`mouseover`,() => {
 $(`#movies`).on(`mouseout`,() => {
     $(`#movies`).animate({fontSize:20},`linear`);
 });
+$(`#login1`).on(`mouseover`,() => {
+    $(`#login1`).animate({fontSize:28},`linear`);
+});
+$(`#login1`).on(`mouseout`,() => {
+    $(`#login1`).animate({fontSize:20},`linear`);
+});

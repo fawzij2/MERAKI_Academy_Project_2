@@ -21,10 +21,7 @@ body{
     font-size: 20px;
 }
 
-.nav:visited{
-    color: #a8dadc;
-    background-color: #e63946;
-}
+
 
 .nav:hover {
     cursor: pointer;
@@ -45,6 +42,22 @@ body{
 }
 #login2:hover{
     cursor: pointer;
+}
+
+#changeColor{
+    position: absolute;
+    top: 10%;
+    left: 95%;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    border: #1d3557 solid 2px;
+    background-color: #f1faee;
+}
+#changeColor:hover{
+    cursor: pointer;
+    border: #fca311 solid 2px;
+    background-color: #14213d;
 }
 
 .pages{
