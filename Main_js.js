@@ -95,7 +95,6 @@ new_acc.on(`click`, () => {
     $(`#log1`).css(`display`, `none`);
     $(`#reg`).css(`display`, `block`);
 });
-
 log_button.on(`click`, () => {
     const user = $(`#l_user`).val();
     console.log(user);
@@ -116,7 +115,11 @@ log_button.on(`click`, () => {
                 a_page.css(`display`, `block`)
             } else if (lastVisited === `m_page`){
                 m_page.css(`display`, `block`)
-            }
+            } else if (lastVisited === `e_page`){
+                e_page.css(`display`, `block`);
+            } else if (lastVisited === `f_page`){
+                f_page.css(`display`, `block`);
+            } 
     } else {
         $(`#user_check`).css(`display`, `block`)
     }
@@ -142,12 +145,16 @@ reg_button.on(`click`, () => {
             signOut.css(`display`, `block`);
             sessionStorage.setItem(`loggedIn`, `true`)
             if (lastVisited === `h_page`){
-                h_page.css(`display`, `block`)
+                h_page.css(`display`, `block`);
             } else if (lastVisited === `a_page`){
-                a_page.css(`display`, `block`)
+                a_page.css(`display`, `block`);
             } else if (lastVisited === `m_page`){
-                m_page.css(`display`, `block`)
-            }
+                m_page.css(`display`, `block`);
+            } else if (lastVisited === `e_page`){
+                e_page.css(`display`, `block`);
+            } else if (lastVisited === `f_page`){
+                f_page.css(`display`, `block`);
+            } 
         } else {
             $(`#pass_check`).css(`display`, `block`)
         }
@@ -174,7 +181,7 @@ signOut.on(`click`, () => {
 
 // just for testing purposes
 $.getJSON(
-    `https://kitsu.io/api/edge/anime?page[limit]=5&page[offset]=0`, (data) => {
+    `https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=0`, (data) => {
         console.log(data);
     }
 )
@@ -312,3 +319,34 @@ $(`#changeColor`).on(`click`, () => {
     }
 })
 
+// explore page functions
+explore.on(`click`, () => {
+    $.getJSON(
+        `https://kitsu.io/api/edge/anime?page[limit]=18&page[offset]=0`, (data) => {
+            for (let x in data.data){
+                $(`#e_main`).append(
+                    $(`<div>`).attr({
+                        id: data.data[x].attributes.id,
+                        className: `overview2 colorScheme2 colorScheme3`
+                    }).append($(`<img>`).attr({
+                        src : data.data[x].attributes.posterImage.original ,
+                        className : `pic2`
+                    })).append($(`<div>`).attr(`class`, `title2`))
+                )
+            }
+            $(`.overview2`).css(`display`, `flex`);
+            $(`.overview2`).css(`flex-direction`, `column`);
+            $(`.overview2`).css(`width`, `200px`);
+            $(`.overview2`).css(`height`, `325px`);
+            $(`.overview2`).css(`border`, `#e63946 solid 2px`);
+            $(`.pic2`).css(`width`, `200px`);
+            $(`.pic2`).css(`height`, `250px`);
+            $(`.title2`).css(`display`, `flex`);
+            $(`.title2`).css(`justify-content`, `center`);
+            $(`.title2`).css(`align-items`, `center`);
+            $(`.title2`).css(`width`, `200px`);
+            $(`.title2`).css(`height`, `75px`);
+            $(`.title2`).css(`font-size`, `20px`);
+        }
+    )
+})

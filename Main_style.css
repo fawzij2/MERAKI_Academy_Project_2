@@ -338,3 +338,24 @@ body{
     border:  #1d3557 solid 2px; */
     margin-bottom: 20px;
 }
+
+/* .overview2{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 325px;
+    border: #e63946 solid 2px;
+}
+
+.pic2{
+    width: 200px;
+    height: 250px;
+}
+.title2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 75px;
+    font-size: 20px;
+} */
