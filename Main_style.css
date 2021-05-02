@@ -333,20 +333,19 @@ body{
     position: absolute;
     top: 97%;
     left: 33%;
-    /* width: 500px;
-    height: 300px;
-    border:  #1d3557 solid 2px; */
     margin-bottom: 20px;
 }
 
-/* .overview2{
+.overview2{
     display: flex;
     flex-direction: column;
     width: 200px;
     height: 325px;
     border: #e63946 solid 2px;
 }
-
+.overview2:hover{
+    cursor: pointer;
+}
 .pic2{
     width: 200px;
     height: 250px;
@@ -358,4 +357,4 @@ body{
     width: 200px;
     height: 75px;
     font-size: 20px;
-} */
+}
