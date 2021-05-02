@@ -136,6 +136,12 @@ body{
 #movies_page{
     display: none;
 }
+#explore_page{
+    display: none;
+}
+#favourites_page{
+    display: none;
+}
 
 #log_reg{
     position:absolute;
@@ -229,9 +235,7 @@ body{
     margin-bottom: 20px;
 }
 
-.testing{
-    
-}
+
 #poster{
     position: absolute;
     left: 10%;
@@ -327,9 +331,10 @@ body{
 
 #video{
     position: absolute;
-    top: 95%;
-    left: 35%;
+    top: 97%;
+    left: 33%;
     /* width: 500px;
     height: 300px;
     border:  #1d3557 solid 2px; */
+    margin-bottom: 20px;
 }
