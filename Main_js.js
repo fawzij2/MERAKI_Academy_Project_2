@@ -18,11 +18,15 @@ const m_page = $(`#movies_page`);
 const e_page = $(`#explore_page`);
 const f_page = $(`#favourites_page`);
 const log_reg = $(`#log_reg`);
-const info_page = $(`#info_page`)
-const new_acc = $(`#new_a`)
-const log_button = $(`#log_button`)
-const reg_button = $(`#reg_button`)
-const panel = $(`.overview`)
+const info_page = $(`#info_page`);
+const new_acc = $(`#new_a`);
+const log_button = $(`#log_button`);
+const reg_button = $(`#reg_button`);
+const panel = $(`.overview`);
+const next = $(`#next`);
+const previous = $(`#previous`);
+const last= $(`#last`);
+const first = $(`#first`);
 
 
 // cycling between pages
@@ -356,29 +360,33 @@ $(`#changeColor`).on(`click`, () => {
 
 // explore page functions
 // 2. page cycling
-
-// const pageCycle = (api_link) => {
-//     $(`#e_main`).empty();
-//     $.getJSON(
-//         api_link, (data) => {
-//             for (let x in data.data){
-//                 $(`#e_main`).append(
-//                     ($(`<div>`).prop({
-//                         id: data.data[x].attributes.id,
-//                         className: `overview2 colorScheme2 colorScheme3`
-//                     }).append($(`<img>`).prop({
-//                         src : data.data[x].attributes.posterImage.original ,
-//                         className : `pic2 `
-//                     })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
-//                 ))
-//             };
-//             // $(`#last`).on(`click`, `pageCycle(${data.links.last})`);           
-//             // $(`#next`).on(`click`, `pageCycle(${data.links.next})`);          
-//             // $(`#previous`).on(`click`, `pageCycle(${data.links.prev})`);            
-//             // $(`#first`).on(`click`, `pageCycle(${data.links.first})`);
-//         }
-//     )
-// }
+const pageCycle = (api_link) => {
+    $(`#e_main`).empty();
+    $.getJSON(
+        api_link, (data) => {
+            for (let x in data.data){
+                $(`#e_main`).append(
+                    ($(`<div>`).prop({
+                        id: data.data[x].attributes.id,
+                        className: `overview2 colorScheme2 colorScheme3`
+                    }).append($(`<img>`).prop({
+                        src : data.data[x].attributes.posterImage.original ,
+                        className : `pic2 `
+                    })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
+                ))
+                $(`#${data.data[x].id}`).attr(`onClick`, `transition2(${data.data[x].id})`)
+            };
+            last.unbind(`click`);
+            next.unbind(`click`);
+            previous.unbind(`click`);
+            first.unbind(`click`);
+            last.click(() => {pageCycle(data.links.last)});            
+            next.click(() => {pageCycle(data.links.next)});         
+            previous.click(() => {pageCycle(data.links.prev)});           
+            first.click(() => {pageCycle(data.links.first)});
+        }
+    )
+}
 // 1. switch to page
 explore.on(`click`, () => {
     $(`#e_main`).empty();
@@ -394,13 +402,16 @@ explore.on(`click`, () => {
                         className : `pic2 `
                     })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
                 ))
-                console.log(data.data[x].id);
                 $(`#${data.data[x].id}`).attr(`onClick`, `transition2(${data.data[x].id})`)
             }
-            // $(`#last`).on(`click`, `pageCycle(${data.links.last})`)            
-            // $(`#next`).on(`click`, `pageCycle(${data.links.next})`)            
-            // $(`#previous`).on(`click`, `pageCycle(${data.links.prev})`)            
-            // $(`#first`).on(`click`, `pageCycle(${data.links.first})`)
+            last.unbind(`click`);
+            next.unbind(`click`);
+            previous.unbind(`click`);
+            first.unbind(`click`);
+            last.click(() => {pageCycle(data.links.last)});            
+            next.click(() => {pageCycle(data.links.next)})          
+            previous.click(() => {pageCycle(data.links.prev)})            
+            first.click(() => {pageCycle(data.links.first)})
         }
     )
 })
