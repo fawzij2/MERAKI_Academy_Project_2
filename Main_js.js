@@ -192,6 +192,8 @@ const transition = (clickedId) => {
     h_page.css(`display`, `none`);
     a_page.css(`display`, `none`);
     m_page.css(`display`, `none`);
+    e_page.css(`display`, `none`);
+    f_page.css(`display`, `none`);
     console.log(clickedId);
     $.getJSON(
         `https://kitsu.io/api/edge/anime/${showsIds[clickedId]}`, (data) => {
@@ -215,6 +217,39 @@ const transition = (clickedId) => {
             console.log(`https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`);
         })
 }
+
+// going to info page from explore
+const transition2 = (clickedId) => {
+    info_page.css(`display`, `block`);
+    h_page.css(`display`, `none`);
+    a_page.css(`display`, `none`);
+    m_page.css(`display`, `none`);
+    e_page.css(`display`, `none`);
+    f_page.css(`display`, `none`);
+    console.log(clickedId);
+    $.getJSON(
+        `https://kitsu.io/api/edge/anime/${clickedId}`, (data) => {
+            let posterImage = data.data.attributes.posterImage.original
+            $(`#poster1`).attr(`src`, data.data.attributes.posterImage.original);
+            $(`#ani_title`).text(data.data.attributes.canonicalTitle);
+            $(`#rating`).text(`rating ${data.data.attributes.averageRating}`);
+            if (data.data.attributes.episodeCount === null){
+                $(`#eps`).text(`# of eps:TBD`)
+            } else {
+            $(`#eps`).text(`# of eps: ${data.data.attributes.episodeCount}`);
+            }
+            $(`#s_date`).text(`aired in: ${data.data.attributes.startDate}`);
+            if (data.data.attributes.endDate === null){
+                $(`#e_date`).text(`ongoing`)
+            } else {
+            $(`#e_date`).text(`ended in: ${data.data.attributes.endDate}`);
+            }
+            $(`#ani_desc`).text(`${data.data.attributes.description}`);
+            $(`#video`).attr(`src`, `https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`)
+            console.log(`https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`);
+        })
+}
+
 
 // effects for hovering on nav. bar
 home.on(`mouseover`,() => {
@@ -321,47 +356,51 @@ $(`#changeColor`).on(`click`, () => {
 
 // explore page functions
 // 2. page cycling
-const pageCycle = (api_link) => {
-    $(`#e_main`).empty()
-    $.getJSON(
-        api_link, (data) => {
-            for (let x in data.data){
-                $(`#e_main`).append(
-                    ($(`<div>`).prop({
-                        id: data.data[x].attributes.id,
-                        className: `overview2 colorScheme2 colorScheme3`
-                    }).append($(`<img>`).prop({
-                        src : data.data[x].attributes.posterImage.original ,
-                        className : `pic2 `
-                    })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
-                ))
-            }
-            $(`#last`).on(`click`, () => {pageCycle(data.links.last)})
-            $(`#next`).on(`click`, () => {pageCycle(data.links.next)})
-            $(`#previuos`).on(`click`, () => {pageCycle(data.links.prev)})
-            $(`#first`).on(`click`, () => {pageCycle(data.links.first)})
-        }
-    )
-}
+
+// const pageCycle = (api_link) => {
+//     $(`#e_main`).empty();
+//     $.getJSON(
+//         api_link, (data) => {
+//             for (let x in data.data){
+//                 $(`#e_main`).append(
+//                     ($(`<div>`).prop({
+//                         id: data.data[x].attributes.id,
+//                         className: `overview2 colorScheme2 colorScheme3`
+//                     }).append($(`<img>`).prop({
+//                         src : data.data[x].attributes.posterImage.original ,
+//                         className : `pic2 `
+//                     })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
+//                 ))
+//             };
+//             // $(`#last`).on(`click`, `pageCycle(${data.links.last})`);           
+//             // $(`#next`).on(`click`, `pageCycle(${data.links.next})`);          
+//             // $(`#previous`).on(`click`, `pageCycle(${data.links.prev})`);            
+//             // $(`#first`).on(`click`, `pageCycle(${data.links.first})`);
+//         }
+//     )
+// }
 // 1. switch to page
 explore.on(`click`, () => {
+    $(`#e_main`).empty();
     $.getJSON(
         `https://kitsu.io/api/edge/anime?page[limit]=18&page[offset]=0`, (data) => {
             for (let x in data.data){
                 $(`#e_main`).append(
                     ($(`<div>`).prop({
-                        id: data.data[x].attributes.id,
+                        id: `${data.data[x].id}`,
                         className: `overview2 colorScheme2 colorScheme3`
                     }).append($(`<img>`).prop({
                         src : data.data[x].attributes.posterImage.original ,
                         className : `pic2 `
                     })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
                 ))
+                console.log(data.data[x].id);
+                $(`#${data.data[x].id}`).attr(`onClick`, `transition2(${data.data[x].id})`)
             }
-            $(`#last`).on(`click`, () => {pageCycle(data.links.last)})
-            $(`#next`).on(`click`, () => {pageCycle(data.links.next)})
-            $(`#previuos`).on(`click`, () => {pageCycle(data.links.prev)})
-            $(`#first`).on(`click`, () => {pageCycle(data.links.first)})
+            // $(`#last`).on(`click`, `pageCycle(${data.links.last})`)            
+            // $(`#next`).on(`click`, `pageCycle(${data.links.next})`)            
+            // $(`#previous`).on(`click`, `pageCycle(${data.links.prev})`)            
+            // $(`#first`).on(`click`, `pageCycle(${data.links.first})`)
         }
     )
 })
