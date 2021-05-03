@@ -61,26 +61,6 @@ movies.on(`click`, () => {
     info_page.css(`display`, `none`);
     sessionStorage.setItem(`lastvisted` ,`m_page`);
 });
-explore.on(`click`, () => {
-    h_page.css(`display`, `none`);
-    a_page.css(`display`, `none`);
-    m_page.css(`display`, `none`);
-    e_page.css(`display`, `block`);
-    f_page.css(`display`, `none`);
-    log_reg.css(`display`, `none`);
-    info_page.css(`display`, `none`);
-    sessionStorage.setItem(`lastvisted` ,`m_page`);
-});
-favourite.on(`click`, () => {
-    h_page.css(`display`, `none`);
-    a_page.css(`display`, `none`);
-    m_page.css(`display`, `none`);
-    e_page.css(`display`, `none`);
-    f_page.css(`display`, `block`);
-    log_reg.css(`display`, `none`);
-    info_page.css(`display`, `none`);
-    sessionStorage.setItem(`lastvisted` ,`m_page`);
-});
 login1.on(`click`, () => {
     h_page.css(`display`, `none`);
     a_page.css(`display`, `none`);
@@ -391,15 +371,23 @@ const pageCycle = (api_link) => {
             next.unbind(`click`);
             previous.unbind(`click`);
             first.unbind(`click`);
-            last.click(() => {pageCycle(data.links.last /*`hasdasdalsjfladfkfpag=${page+1}&&offset=${offset+1}`)*/);            
+            last.click(() => {pageCycle(data.links.last)});            
             next.click(() => {pageCycle(data.links.next)});         
             previous.click(() => {pageCycle(data.links.prev)});           
             first.click(() => {pageCycle(data.links.first)});
         }
     )
 }
-// 1. switch to page
+// 1. switch to explore page
 explore.on(`click`, () => {
+    h_page.css(`display`, `none`);
+    a_page.css(`display`, `none`);
+    m_page.css(`display`, `none`);
+    e_page.css(`display`, `block`);
+    f_page.css(`display`, `none`);
+    log_reg.css(`display`, `none`);
+    info_page.css(`display`, `none`);
+    sessionStorage.setItem(`lastvisted` ,`m_page`);
     $(`#e_main`).empty();
     $.getJSON(
         `https://kitsu.io/api/edge/anime?page[limit]=18&page[offset]=0`, (data) => {
@@ -500,3 +488,35 @@ const favouriteAdd = (k) => {
         log_reg.css(`display`, `block`)
     }
 }
+
+// switch to fav page
+favourite.on(`click`, () => {
+    h_page.css(`display`, `none`);
+    a_page.css(`display`, `none`);
+    m_page.css(`display`, `none`);
+    e_page.css(`display`, `none`);
+    f_page.css(`display`, `block`);
+    log_reg.css(`display`, `none`);
+    info_page.css(`display`, `none`);
+    sessionStorage.setItem(`lastvisted` ,`m_page`);
+    $(`#e_main`).empty();
+    userFav = localStorage.getItem(`currentUser`);
+    console.log(userFav);
+    favouriteList2 = localStorage.getItem(userFav);
+    console.log(favouriteList2)
+    for (let i = 0 ; i < favouriteList2.length ; i++){
+        $.getJSON(
+            `https://kitsu.io/api/edge/anime/${favouriteList2[i]}`, (data) => {
+                $(`#e_main`).append(
+                    ($(`<div>`).prop({
+                        id: `${data.data[x].id}`,
+                        className: `overview2 colorScheme2 colorScheme3`
+                    }).append($(`<img>`).prop({
+                        src : data.data[x].attributes.posterImage.original ,
+                        className : `pic2 `
+                    })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
+                ))
+                $(`#${data.data[x].id}`).attr(`onClick`, `transition2(${data.data[x].id})`);
+            })
+    }
+})
