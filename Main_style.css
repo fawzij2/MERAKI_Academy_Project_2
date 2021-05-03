@@ -21,11 +21,14 @@ body{
     font-size: 20px;
 }
 
-
-
 .nav:hover {
     cursor: pointer;
 }
+
+#favourites{
+    display: none;
+}
+
 #login{
     margin-left: auto;
     font-size: 20px;
@@ -104,7 +107,7 @@ body{
 
 .main2{
     display: grid;
-    grid-template-columns: repeat(3, 300px);
+    grid-template-columns: repeat(7, 1fr);
     gap: 100px;
     justify-content: space-around;
     align-items: center;

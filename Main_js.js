@@ -130,7 +130,10 @@ reg_button.on(`click`, () => {
             loggedIn.css(`display`, `block`);
             login1.css(`display`, `none`);
             signOut.css(`display`, `block`);
-            sessionStorage.setItem(`loggedIn`, `true`)
+            sessionStorage.setItem(`loggedIn`, `true`);
+            sessionStorage.setItem(`currentUser`, `${user}`);
+            localStorage.setItem( `${user}5`, JSON.stringify([]))
+            favourite.css(`display`, `block`)
             if (lastVisited === `h_page`){
                 h_page.css(`display`, `block`);
             } else if (lastVisited === `a_page`){
@@ -157,6 +160,8 @@ signOut.on(`click`, () => {
     signOut.css(`display`, `none`);
     log_reg.css(`display`, `none`)
     let lastVisited = sessionStorage.getItem(`lastvisted`);
+    sessionStorage.setItem(`currentUser`, ``)
+    favourite.css(`display`, `none`)
     if (lastVisited === `h_page`){
         h_page.css(`display`, `block`)
     } else if (lastVisited === `a_page`){
@@ -387,7 +392,7 @@ explore.on(`click`, () => {
     f_page.css(`display`, `none`);
     log_reg.css(`display`, `none`);
     info_page.css(`display`, `none`);
-    sessionStorage.setItem(`lastvisted` ,`m_page`);
+    sessionStorage.setItem(`lastvisted` ,`e_page`);
     $(`#e_main`).empty();
     $.getJSON(
         `https://kitsu.io/api/edge/anime?page[limit]=18&page[offset]=0`, (data) => {
@@ -438,12 +443,13 @@ add_fav.on(`mouseout`, () => {
 const favouriteAdd = (k) => {
     let logCheck = sessionStorage.getItem(`loggedIn`)
     if (logCheck === `true`){
-        const user = sessionStorage.getItem(`currentUser`)
-        const favouriteList = localStorage.getItem(user)
+        const user = sessionStorage.getItem(`currentUser`) + 5
+        console.log(user)
+        const favouriteList = JSON.parse(localStorage.getItem(user)) || []
         if(favouriteList.indexOf(k) === -1){
-            favouriteList.push(k)
+            favouriteList.push(k)                                   
             console.log(favouriteList);
-            localStorage.setItem(user,favouriteList)
+            localStorage.setItem(user , JSON.stringify(favouriteList))
             add_fav.off()
             add_fav.on(`mouseover`, () => {
                 add_fav.empty()
@@ -464,7 +470,7 @@ const favouriteAdd = (k) => {
         } else {
             favouriteList.splice(favouriteList.indexOf(k),1)
             console.log(favouriteList);
-            localStorage.setItem(user,favouriteList);
+            localStorage.setItem(user, JSON.stringify(favouriteList));
             add_fav.off();
             add_fav.on(`mouseover`, () => {
                 add_fav.empty()
@@ -499,24 +505,25 @@ favourite.on(`click`, () => {
     log_reg.css(`display`, `none`);
     info_page.css(`display`, `none`);
     sessionStorage.setItem(`lastvisted` ,`m_page`);
-    $(`#e_main`).empty();
-    userFav = localStorage.getItem(`currentUser`);
+    $(`#f_main`).empty();
+    userFav = sessionStorage.getItem(`currentUser`) + 5;
     console.log(userFav);
-    favouriteList2 = localStorage.getItem(userFav);
+    favouriteList2 = JSON.parse(localStorage.getItem(userFav)) || [];
     console.log(favouriteList2)
     for (let i = 0 ; i < favouriteList2.length ; i++){
         $.getJSON(
             `https://kitsu.io/api/edge/anime/${favouriteList2[i]}`, (data) => {
-                $(`#e_main`).append(
+                console.log(data)
+                $(`#f_main`).append(
                     ($(`<div>`).prop({
-                        id: `${data.data[x].id}`,
+                        id: `${data.data.id}`,
                         className: `overview2 colorScheme2 colorScheme3`
                     }).append($(`<img>`).prop({
-                        src : data.data[x].attributes.posterImage.original ,
+                        src : data.data.attributes.posterImage.original ,
                         className : `pic2 `
-                    })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
+                    })).append(`<div class="title2 insText">${data.data.attributes.canonicalTitle}</div>`)
                 ))
-                $(`#${data.data[x].id}`).attr(`onClick`, `transition2(${data.data[x].id})`);
+                $(`#${data.data.id}`).attr(`onClick`, `transition2(${data.data.id})`);
             })
     }
 })
