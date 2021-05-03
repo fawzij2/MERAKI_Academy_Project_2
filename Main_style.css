@@ -70,6 +70,18 @@ body{
 
 }
 
+.pages2{
+    position:absolute;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    top: 75px;
+    width: 1285px;
+    margin-bottom: 30px;
+}
+
 .intro{
     display: flex;
     justify-content: center;
@@ -89,6 +101,16 @@ body{
     align-items: center;
     margin-bottom: 20px;
 }
+
+.main2{
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 100px;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 .overview{
     display: flex;
     width: 350px;
@@ -357,4 +379,24 @@ body{
     width: 200px;
     height: 75px;
     font-size: 20px;
+    color: #1d3557;
+}
+
+#pageSwitch{
+    position: relative;
+    top: 95%;
+    left: 46%;
+    display: inline-block;
+}
+.pagination{
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    transition: background-color .3s;
+    border: #ddd solid 2px;
+}
+.pagination:active{
+    background-color: #4caf50;
+    color: white;
+    border: #4caf50 solid 2px;
 }

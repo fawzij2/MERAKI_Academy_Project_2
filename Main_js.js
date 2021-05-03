@@ -181,7 +181,7 @@ signOut.on(`click`, () => {
 
 // just for testing purposes
 $.getJSON(
-    `https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=0`, (data) => {
+    `https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=40`, (data) => {
         console.log(data);
     }
 )
@@ -320,6 +320,30 @@ $(`#changeColor`).on(`click`, () => {
 })
 
 // explore page functions
+// 2. page cycling
+const pageCycle = (api_link) => {
+    $(`#e_main`).empty()
+    $.getJSON(
+        api_link, (data) => {
+            for (let x in data.data){
+                $(`#e_main`).append(
+                    ($(`<div>`).prop({
+                        id: data.data[x].attributes.id,
+                        className: `overview2 colorScheme2 colorScheme3`
+                    }).append($(`<img>`).prop({
+                        src : data.data[x].attributes.posterImage.original ,
+                        className : `pic2 `
+                    })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
+                ))
+            }
+            $(`#last`).on(`click`, () => {pageCycle(data.links.last)})
+            $(`#next`).on(`click`, () => {pageCycle(data.links.next)})
+            $(`#previuos`).on(`click`, () => {pageCycle(data.links.prev)})
+            $(`#first`).on(`click`, () => {pageCycle(data.links.first)})
+        }
+    )
+}
+// 1. switch to page
 explore.on(`click`, () => {
     $.getJSON(
         `https://kitsu.io/api/edge/anime?page[limit]=18&page[offset]=0`, (data) => {
@@ -330,10 +354,16 @@ explore.on(`click`, () => {
                         className: `overview2 colorScheme2 colorScheme3`
                     }).append($(`<img>`).prop({
                         src : data.data[x].attributes.posterImage.original ,
-                        className : `pic2`
-                    })).append(`<div class="title2">${data.data[x].attributes.canonicalTitle}</div>`)
+                        className : `pic2 `
+                    })).append(`<div class="title2 insText">${data.data[x].attributes.canonicalTitle}</div>`)
                 ))
             }
+            $(`#last`).on(`click`, () => {pageCycle(data.links.last)})
+            $(`#next`).on(`click`, () => {pageCycle(data.links.next)})
+            $(`#previuos`).on(`click`, () => {pageCycle(data.links.prev)})
+            $(`#first`).on(`click`, () => {pageCycle(data.links.first)})
         }
     )
 })
+
+
