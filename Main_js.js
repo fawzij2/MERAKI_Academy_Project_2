@@ -82,9 +82,9 @@ new_acc.on(`click`, () => {
 });
 log_button.on(`click`, () => {
     const user = $(`#l_user`).val();
-    console.log(user);
+    // console.log(user);
     const pass = $(`#l_pass`).val();
-    console.log(pass);
+    // console.log(pass);
     if (accounts[user] === pass){
         login1.css(`display`, `none`);
         loggedIn.text(`welcome ${user}`);
@@ -115,11 +115,11 @@ log_button.on(`click`, () => {
 // register function
 reg_button.on(`click`, () => {
     const user = $(`#r_user`).val();
-    console.log(user);
+    // console.log(user);
     const pass = $(`#r_pass`).val();
-    console.log(pass);
+    // console.log(pass);
     const con_pass = $(`#c_pass`).val();
-    console.log(con_pass);
+    // console.log(con_pass);
     if (!accounts[user]) {
         if (pass === con_pass){
             accounts[user] = pass
@@ -172,11 +172,11 @@ signOut.on(`click`, () => {
 })
 
 // just for testing purposes
-$.getJSON(
-    `https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=40`, (data) => {
-        console.log(data);
-    }
-)
+// $.getJSON(
+//     `https://kitsu.io/api/edge/anime?page[limit]=20&page[offset]=40`, (data) => {
+//         console.log(data);
+//     }
+// )
 
 // going to info page
 const transition = (clickedId) => {
@@ -186,7 +186,7 @@ const transition = (clickedId) => {
     m_page.css(`display`, `none`);
     e_page.css(`display`, `none`);
     f_page.css(`display`, `none`);
-    console.log(clickedId);
+    // console.log(clickedId);
     $.getJSON(
         `https://kitsu.io/api/edge/anime/${showsIds[clickedId]}`, (data) => {
             let posterImage = data.data.attributes.posterImage.original
@@ -206,7 +206,7 @@ const transition = (clickedId) => {
             }
             $(`#ani_desc`).text(`${data.data.attributes.description}`);
             $(`#video`).attr(`src`, `https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`)
-            console.log(`https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`);
+            // console.log(`https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`);
             add_fav.unbind(`click`)
             add_fav.click(() => {favouriteAdd(data.data.id)});
         })
@@ -220,7 +220,7 @@ const transition2 = (clickedId) => {
     m_page.css(`display`, `none`);
     e_page.css(`display`, `none`);
     f_page.css(`display`, `none`);
-    console.log(clickedId);
+    // console.log(clickedId);
     $.getJSON(
         `https://kitsu.io/api/edge/anime/${clickedId}`, (data) => {
             let posterImage = data.data.attributes.posterImage.original
@@ -240,7 +240,7 @@ const transition2 = (clickedId) => {
             }
             $(`#ani_desc`).text(`${data.data.attributes.description}`);
             $(`#video`).attr(`src`, `https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`)
-            console.log(`https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`);
+            // console.log(`https://www.youtube.com/embed/${data.data.attributes.youtubeVideoId}`);
             add_fav.unbind(`click`)
             add_fav.click(() => {favouriteAdd(data.data.id)});
         })
@@ -444,11 +444,11 @@ const favouriteAdd = (k) => {
     let logCheck = sessionStorage.getItem(`loggedIn`)
     if (logCheck === `true`){
         const user = sessionStorage.getItem(`currentUser`) + 5
-        console.log(user)
+        // console.log(user)
         const favouriteList = JSON.parse(localStorage.getItem(user)) || []
         if(favouriteList.indexOf(k) === -1){
             favouriteList.push(k)                                   
-            console.log(favouriteList);
+            // console.log(favouriteList);
             localStorage.setItem(user , JSON.stringify(favouriteList))
             add_fav.off()
             add_fav.on(`mouseover`, () => {
@@ -469,7 +469,7 @@ const favouriteAdd = (k) => {
             })
         } else {
             favouriteList.splice(favouriteList.indexOf(k),1)
-            console.log(favouriteList);
+            // console.log(favouriteList);
             localStorage.setItem(user, JSON.stringify(favouriteList));
             add_fav.off();
             add_fav.on(`mouseover`, () => {
@@ -507,13 +507,13 @@ favourite.on(`click`, () => {
     sessionStorage.setItem(`lastvisted` ,`m_page`);
     $(`#f_main`).empty();
     userFav = sessionStorage.getItem(`currentUser`) + 5;
-    console.log(userFav);
+    // console.log(userFav);
     favouriteList2 = JSON.parse(localStorage.getItem(userFav)) || [];
-    console.log(favouriteList2)
+    // console.log(favouriteList2)
     for (let i = 0 ; i < favouriteList2.length ; i++){
         $.getJSON(
             `https://kitsu.io/api/edge/anime/${favouriteList2[i]}`, (data) => {
-                console.log(data)
+                // console.log(data)
                 $(`#f_main`).append(
                     ($(`<div>`).prop({
                         id: `${data.data.id}`,
