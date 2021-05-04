@@ -115,10 +115,12 @@ body{
 }
 
 .overview{
+    background-color: transparent;
     display: flex;
     width: 350px;
     height: 200px;
     border: #e63946 solid 3px;
+    perspective: 1000px;
 }
 .overview:hover{
     cursor: pointer;
@@ -137,12 +139,9 @@ body{
     font-family: monospace;
     font-size: 18px;
     color: #1d3557;
-    filter: blur(10px);
 }
 
-.description:hover{
-    filter: blur(0);
-}
+
 .title{
     font-size: 22px;
 }
@@ -418,4 +417,39 @@ body{
     background-color: #4caf50;
     color: white;
     border: #4caf50 solid 2px;
+}
+
+.cardbody{
+    position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.overview:hover .cardbody{
+    transform: rotateY(180deg);
+}
+.frontside, .backside{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.frontside{
+    display: flex;
+}
+
+.backside{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 200px;
+    transform: rotateY(180deg);
+    font-family: monospace;
+    font-size: 18px;
+    color: #1d3557;
 }
